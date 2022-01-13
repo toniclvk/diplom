@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Weather Application</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://getbootstrap.com/docs/5.1/examples/product/product.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header sticky-top py-1">
+
+  <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <h5 class="display-5 text-white" >
+      Weather Application
+    </h5>
+    <a class="py-2 d-none d-md-inline-block" href="/">Main</a>
+    <a class="py-2 d-none d-md-inline-block" href="/cleardb/">Clear DB</a>
+    <a class="py-2 d-none d-md-inline-block" href="/viewdb/">View Data</a>
+    <a class="py-2 d-none d-md-inline-block" href="/importdb/">Import Data</a>
+    <a class="py-2 d-none d-md-inline-block" href="/admin">Admin</a>
+    <a class="py-2 d-none d-md-inline-block" href="/about/">About</a>
+
+  </nav>
+</header>
+<main>
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">Variant 7.</h1>
+      <p class="lead fw-normal">Using API https://www.metaweather.com/api/ get data about weather in Moscow for current
+        month and store it into your DB: id, weather_state_name, wind_direction_compass, created, applicable_date,
+        min_temp, max_temp, the_temp. Output the data by date (the date is set) in form of a table and sort them by
+        created in ascending order.</p>
+      <br>
+            <p class="lead">The authors of the task:<br> Aleksandr Tolkachev <br>
+        Sergei Smozhevskii <br/> Dmitrii Overchenko </p>
+
+      <p class="lead"> Completed the task:  Viacheslav Kudriavtsev</p>
+    </div>
+
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div>
+
+</main>
+
+<footer class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md">
+
+      <small class="d-block mb-3 text-muted">© 2021–2022</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Main</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="/">Weather Application</a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Clear DB</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="/cleardb/">From DB Postgres</a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>View Data</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="/viewdb/">From DB Postgres</a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Import Data</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="/importdb/">From API - www.metaweather.com/api/</a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+        <li><a class="link-secondary" href="#"></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

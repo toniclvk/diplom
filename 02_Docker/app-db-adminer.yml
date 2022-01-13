@@ -1,0 +1,54 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+  #Application
+  application:
+    hostname: app
+    domainname: toniclvk.com
+    container_name: app
+    build:
+      context: ./app
+    command: /bin/sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports: 
+        - 8000:8000
+    networks:
+        bridge:
+           ipv4_address: 172.0.0.100
+    links:
+      - database
+    depends_on:
+        - database
+  database:
+    image: postgres
+    hostname: database
+    domainname: toniclvk.com
+    container_name: database
+    restart: always
+    networks:
+        bridge:
+           ipv4_address: 172.0.0.101
+    environment:
+     - POSTGRES_DB=${DB_NAME}
+     - POSTGRES_USER=${DB_USER}
+     - POSTGRES_PASSWORD=${DB_PASSWORD}
+     - POSTGRES_HOST_AUTH_METHOD=trust
+
+  adminer:
+    image: adminer
+    hostname: adminer
+    domainname: toniclvk.com
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+        bridge:
+           ipv4_address: 172.0.0.102
+networks:
+  bridge:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.0.0.0/16
+         gateway: 172.0.0.1
