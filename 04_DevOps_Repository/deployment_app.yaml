@@ -1,0 +1,71 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: weather-application
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  backend:
+    serviceName: weather-application
+    servicePort: 8000
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: weather-application
+              servicePort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather-application
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    targetPort: 8000
+  selector:
+    name: weather-application
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-application
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      name: weather-application
+  template:
+    metadata:
+      labels:
+        name: weather-application
+    spec:
+      containers:
+      - name: weather-application-app
+        image: toniclvk/lab2022:||version||
+        ports:
+          - containerPort: 8000
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: azure-app-hpa
+spec:
+  maxReplicas: 9 # define max replica count
+  minReplicas: 2  # define min replica count
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: weather-application
+  targetCPUUtilizationPercentage: 15 # target CPU utilization
